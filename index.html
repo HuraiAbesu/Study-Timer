@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>勉強タイムカウンター</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>勉強タイムカウンター</h1>
+        
+        <!-- アナログ時計 -->
+        <div class="analog-container">
+            <canvas id="analogClock" width="120" height="120"></canvas>
+        </div>
+        
+        <!-- デジタルタイマー -->
+        <div id="timer" class="digital-timer">25:00</div>
+        <div id="break-timer" class="break-timer" style="display: none;">休憩時間: 05:00</div>
+        
+        <!-- タイマー設定 -->
+        <div class="settings">
+            <label for="studyMinutes">勉強時間 (分):</label>
+            <input type="number" id="studyMinutes" min="0" max="60" value="25">
+            
+            <label for="breakMinutes">休憩時間 (分):</label>
+            <input type="number" id="breakMinutes" min="0" max="60" value="5">
+            
+            <label for="loopCount">ループ回数:</label>
+            <input type="number" id="loopCount" min="1" value="3">
+        </div>
+        
+        <!-- ボタン -->
+        <div class="button-container">
+            <button onclick="startTimer()">スタート</button>
+            <button onclick="pauseTimer()">ポーズ</button>
+            <button onclick="resetTimer()">リセット</button>
+            <button id="resumeButton" onclick="resumeStudy()" style="display: none;">再開</button>
+        </div>
+    </div>
+    
+    <!-- オリジナルポップアップ -->
+    <div id="popup" class="popup" style="display: none;">
+        <p id="popupMessage"></p>
+        <button onclick="closePopup()">OK</button>
+    </div>
+    
+    <audio id="alarmSound1" src="sound/alarm1.mp3" loop></audio>
+    <audio id="alarmSound2" src="sound/alarm2.mp3" loop></audio>
+    <script src="timer.js"></script>
+</body>
+</html>
